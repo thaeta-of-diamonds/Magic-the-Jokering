@@ -1216,20 +1216,20 @@ return {
             mtg_energy = "Energy",
         },
         v_dictionary = {
-            a_xchips = {"X#1# Chips"},
-            a_powmult = {"^#1# Mult"},
-            a_powchips = {"^#1# Chips"},
-            a_powmultchips = {"^#1# Mult+Chips"},
-            a_round = {"+#1# Round"},
-            a_candy = {"+#1# Candy"},
-            a_xchips_minus = {"-X#1# Chips"},
-            a_powmult_minus = {"-^#1# Mult"},
-            a_powchips_minus = {"-^#1# Chips"},
-            a_powmultchips_minus = {"-^#1# Mult+Chips"},
-            a_round_minus = {"-#1# Round"},
+            a_xchips = "X#1# Chips",
+            a_powmult = "^#1# Mult",
+            a_powchips = "^#1# Chips",
+            a_powmultchips = "^#1# Mult+Chips",
+            a_round = "+#1# Round",
+            a_candy = "+#1# Candy",
+            a_xchips_minus = "-X#1# Chips",
+            a_powmult_minus = "-^#1# Mult",
+            a_powchips_minus = "-^#1# Chips",
+            a_powmultchips_minus = "-^#1# Mult+Chips",
+            a_round_minus = "-#1# Round",
 
-            a_tag = {"#1# Tag"},
-            a_tags = {"#1# Tags"},
+            a_tag = "#1# Tag",
+            a_tags = "#1# Tags",
         }
     }
 }
