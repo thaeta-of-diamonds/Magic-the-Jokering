@@ -180,12 +180,12 @@ if MagicTheJokering.config.include_clover_suit then
 	init_clovers()
 end
 update_ranks()
-assert(SMODS.load_file("items/Magic.lua"))()
-assert(SMODS.load_file("items/Jokers.lua"))()
-assert(SMODS.load_file("items/Enha.lua"))()
-assert(SMODS.load_file("items/Misc.lua"))()
-assert(SMODS.load_file("items/Lands.lua"))()
-assert(SMODS.load_file("items/Seals.lua"))()
+assert(SMODS.load_file("Items/Magic.lua"))()
+assert(SMODS.load_file("Items/Jokers.lua"))()
+assert(SMODS.load_file("Items/Enha.lua"))()
+assert(SMODS.load_file("Items/Misc.lua"))()
+assert(SMODS.load_file("Items/Lands.lua"))()
+assert(SMODS.load_file("Items/Seals.lua"))()
 
 -- other mod stuff
 
