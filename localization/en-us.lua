@@ -328,6 +328,28 @@ return {
                     "held in hand when hand played"
                 },
             },
+            j_mtg_ajani = {
+                name = "Ajani",
+                text = {
+                    {
+                        "{C:attention}#3#{}: {C:attention}#6#{} selected cards get",
+                        "{C:attention}+#7#{} rank",
+                    },
+                    {
+                        "{C:attention}#4#{}: Each card in your hand gets",
+                        "{C:attention}+#8#{} rank and each other",
+                        "Planeswalker gets {C:attention}+#9#{} loyalty"
+                    },
+                    {
+                        "{C:attention}#5#{}: Apply a {C:red}Red Seal{} to",
+                        "each card in your hand"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
             j_mtg_helmofawakening = {
                 name = "Helm of Awakening",
                 text = {
@@ -1168,6 +1190,7 @@ return {
 
             mtg_draw_ex = "Draw",
             mtg_rule_ex = "One Hand",
+            mtg_planeswalker_active_ex = "Active!",
             mtg_protect_ex = "Protect",
             mtg_haste_ex = "Haste",
             mtg_octopus_ex = "Rise...",
