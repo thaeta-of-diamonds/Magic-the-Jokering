@@ -174,13 +174,13 @@ SMODS.Atlas({
 assert(SMODS.load_file("lib/utility.lua"))()
 assert(SMODS.load_file("lib/Damage.lua"))()
 assert(SMODS.load_file("lib/energy.lua"))()
-init_planeswalkers()
 init_suitless()
 if MagicTheJokering.config.include_clover_suit then
 	init_clovers()
 end
 update_ranks()
 assert(SMODS.load_file("Items/Magic.lua"))()
+assert(SMODS.load_file("Items/planeswalkers.lua"))()
 assert(SMODS.load_file("Items/Jokers.lua"))()
 assert(SMODS.load_file("Items/Enha.lua"))()
 assert(SMODS.load_file("Items/Misc.lua"))()
