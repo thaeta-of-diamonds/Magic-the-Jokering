@@ -1043,7 +1043,7 @@ SMODS.Joker {
   object_type = "Joker",
   name = "Decoction Module",
   key = "decoction",
-  pos = { x = 0, y = 1 },
+  pos = { x = 11, y = 6 },
   atlas = "mtg_atlas",
   cost = 8,
   order = 14,

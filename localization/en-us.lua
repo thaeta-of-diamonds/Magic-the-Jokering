@@ -385,18 +385,6 @@ return {
 					"suit in your deck",
 				},
             },
-            j_mtg_jetmir = {
-                name = "Jetmir, Nexus of Revels",
-                text = {
-                    "If you have a cat tag that is {C:attention}level 3{} or more then",
-                    "every scored card gives an additional {C:mult}+#1#{} Mult",
-                    "then If you have a cat tag that is {C:attention}level 6{} or more then",
-                    "every scored card gives an additional {X:mult,C:White}X#2#{} Mult",
-                    "then if you have a cat tag that is {C:attention}level 9{} or more then",
-                    "every scored card gives an additional",
-                    "{X:dark_edition,C:White}^#3#{} Mult",
-                },
-            },
         },
         Enhanced = {
             m_mtg_octopus = {
@@ -626,14 +614,7 @@ return {
                     "by {C:attention}#1#{}"
                 },
             },
-            m_mtg_leonin_warleader = {
-                name = "Leonin Warleader",
-                text = {
-                    "when scored add {C:attention}2{} cat tag"
-                },
-            },
-        },
-       
+		},
         Tarot = {
             c_mtg_forest = {
                 name = "Forest",
