@@ -1,3 +1,15 @@
+function dissect(var)
+    for k, v in pairs(var) do
+        print("--"..tostring(k).."--")
+        if type(v) == "table" then
+            for key, value in pairs(v) do
+                print(tostring(key).."="..tostring(value))
+            end
+        else
+            print(tostring(v))
+        end
+    end
+end
 
 SMODS.current_mod.optional_features = {
 	retrigger_joker = true,
@@ -374,29 +386,68 @@ G.FUNCS.reserve_card = function(e)
 	}))
 end
 
-G.FUNCS.use_loyalty_1 = function(e)
-	local c1 = e.config.ref_table
+G.FUNCS.format_loyalty_cost = function(num)
+    local str = tostring(math.abs(num))
+    if num >= 0 then
+        str = "+"..str
+    else
+        str = "-"..str
+    end
+    return str
+end
+
+function Card:is_planeswalker()
+	return self.ability.planeswalker ~= nil
+end
+
+function Card:get_loyalty_ability(index)
+	return self.ability.planeswalker.loyalty_abilities[index]
+end
+
+function Card:can_activate_loyalty_ability(index)
+	local ability = self:get_loyalty_ability(index)
+	local loyalty = self.ability.planeswalker.loyalty
+	if self.ability.planeswalker.has_activated_loyalty then return false end
+	if -1 * ability.cost + loyalty < 0 then return false end
+	return true
+end
+
+function Card:can_activate_any_loyalty_ability(index)
+	if not self.ability.planeswalker or not self.ability.planeswalker.loyalty_abilities then return false end
+	for index, value in ipairs(self.ability.planeswalker.loyalty_abilities) do
+		if self:can_activate_loyalty_ability(index) then
+			return true
+		end
+	end
+	return false
+end
+
+G.FUNCS.use_loyalty = function(e)
+	local card = e.config.ref_table
+	local loyalty_ability = card:get_loyalty_ability(e.config.index)
+	card.ability.planeswalker.loyalty = card.ability.planeswalker.loyalty + loyalty_ability["cost"]
+	card.ability.planeswalker.has_activated_loyalty = true
 	G.E_MANAGER:add_event(Event({
 		trigger = "after",
 		delay = 0.1,
 		func = function()
+			loyalty_ability["use"]()
 			return true
 		end,
 	}))
 	G.jokers:unhighlight_all()
 end
 
-G.FUNCS.can_use_loyalty_1 = function(e)
-	local c1 = e.config.ref_table
-	if true then
+G.FUNCS.can_use_loyalty = function(e)
+	if e.config.ref_table:can_activate_loyalty_ability(e.config.index) then
 		e.config.colour = G.C.GOLD
-        e.config.button = 'use_loyalty_1'
+        e.config.button = 'use_loyalty'
 	else
 		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
       	e.config.button = nil
 	end
 end
--- [[
+
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 G.UIDEF.use_and_sell_buttons = function(card)
 	local retval = G_UIDEF_use_and_sell_buttons_ref(card)
@@ -417,52 +468,61 @@ G.UIDEF.use_and_sell_buttons = function(card)
 				}},
 			}}
 		end	
-	--[[if card.area and card.area.config.type == 'joker' and card.ability.set == 'Joker' then
-		local gx = 
-		{n=G.UIT.C, config={align = "cl"}, nodes={
-		  
-			{n=G.UIT.C, config={ref_table = card, align = "cl",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.0, hover = true, shadow = true, colour = G.C.GOLD, one_press = true, button = 'sell_card', func = 'can_use_loyalty_1'}, nodes={
-			  {n=G.UIT.B, config = {w=0.1,h=0.6}},
-			  {n=G.UIT.C, config={align = "tm"}, nodes={
-				  {n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
-					  {n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
-				  }},
-				  {n=G.UIT.R, config={align = "cm"}, nodes={
-					{n=G.UIT.T, config={text = "+2",colour = G.C.WHITE, scale = 0.55, shadow = true}}
-				  }}
-			  }}
-			}},
-			{n=G.UIT.C, config={ref_table = card, align = "cl",maxw = 1.25, padding = 0.1, r=0.08, minw = 0.5, hover = true, shadow = true, colour = G.C.GOLD, one_press = true, button = 'sell_card', func = 'can_use_loyalty_1'}, nodes={
-				{n=G.UIT.B, config = {w=0.1,h=0.6}},
-				{n=G.UIT.C, config={align = "tm"}, nodes={
-					{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
-						{n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
-					}},
-					{n=G.UIT.R, config={align = "cm"}, nodes={
-					  {n=G.UIT.T, config={text = "-3",colour = G.C.WHITE, scale = 0.55, shadow = true}}
+	end
+	if card.area and card.area.config.type == 'joker' and card.ability.set == 'Joker' and card.ability.planeswalker.loyalty_abilities then
+		local abilities = {}
+		for index, value in ipairs(card.ability.planeswalker.loyalty_abilities) do
+			table.insert(
+				abilities, 
+				{n=G.UIT.C, config={ref_table = card, align = "cr",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.GOLD, one_press = true, button = 'sell_card', func = 'can_use_loyalty', index = index}, nodes={
+					{n=G.UIT.B, config = {w=0.1,h=0.6}},
+					{n=G.UIT.C, config={align = "tm"}, nodes={
+						{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
+							{n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
+						}},
+						{n=G.UIT.R, config={align = "cm"}, nodes={
+							{n=G.UIT.T, config={text = G.FUNCS.format_loyalty_cost(value['cost']),colour = G.C.WHITE, scale = 0.55, shadow = true}}
+						}}
 					}}
 				}}
-			  }},
-			  {n=G.UIT.C, config={ref_table = card, align = "cl",maxw = 1.25, padding = 0.1, r=0.08, minw = 0.5, hover = true, shadow = true, colour = G.C.GOLD, one_press = true, button = 'sell_card', func = 'can_use_loyalty_1'}, nodes={
-				{n=G.UIT.B, config = {w=0.1,h=0.6}},
-				{n=G.UIT.C, config={align = "tm"}, nodes={
-					{n=G.UIT.R, config={align = "cm", maxw = 1.25}, nodes={
-						{n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.4, shadow = true}}
-					}},
-					{n=G.UIT.R, config={align = "cm"}, nodes={
-					  {n=G.UIT.T, config={text = "-7",colour = G.C.WHITE, scale = 0.55, shadow = true}}
-					}}
-				}}
-			  }}
-		  }}
+			)
+		end
+		
+		local loyalty = {n=G.UIT.C, config={align = "cr"}, nodes=abilities}
 		retval.nodes[1].nodes[2].nodes = retval.nodes[1].nodes[2].nodes or {}
-		table.insert(retval.nodes[1].nodes[2].nodes, gx)
+		table.insert(retval.nodes[1].nodes[2].nodes, loyalty)
 		return retval
-	end]]
 	end
 	return retval
 end
---]]
+
+local updateref = Card.update
+function Card:update(dt)
+  	updateref(self, dt)
+
+  	if G.STAGE == G.STAGES.RUN then
+		if not self:is_planeswalker() then self.ability.planeswalker = nil return end
+		local can_activate  = self:can_activate_any_loyalty_ability()
+
+		self.ability.planeswalker = self.ability.planeswalker or {}
+		if can_activate and not self.ability.planeswalker.jiggle then
+			juice_card_until(self,
+				function(card)
+					return (card:can_activate_any_loyalty_ability())
+				end,
+				true)
+
+			self.ability.planeswalker.jiggle = true
+		end
+
+		if not can_activate and self.ability.planeswalker.jiggle then
+			self.ability.planeswalker.jiggle = false
+		end
+	else
+		self.ability.planeswalker = nil
+	end
+end
+
 -- SMODS UI funcs (additions, config, collection)
 
 SMODS.current_mod.config_tab = function()

@@ -1,21 +1,44 @@
---[[Ajani
-SMODS.Joker {
-  object_type = "Joker",
-name = "mtg-ajani",
-  key = "ajani",
-  pos = {
-      x = 0,
-      y = 7
+--Ajani
+SMODS.Joker { 
+	object_type = "Joker",
+	name = "mtg-ajani",
+	key = "ajani",
+	pos = { x = 0, y = 7 },
+	config = { 
+    extra = {
+      
+    },
+    planeswalker = {
+      has_activated_loyalty = true,
+      loyalty = 5,
+      loyalty_abilities = {
+        {
+          cost=1,
+          use=function(self, card)
+            print("activate!!!")
+          end
+        },{
+          cost=-3,
+          use=function(self, card)
+            print("activate!!!!!")
+          end
+        }
+      },
+    },
   },
-  atlas = 'mtg_atlas',
-cost = 8,
-order = 1,
-rarity = 3,
-  config = {},
-  loc_vars = function(self, info_queue, card)
-    return { }
+  order = 5,
+	rarity = 2,
+	cost = 8,
+	atlas = "mtg_atlas",
+	loc_vars = function(self, info_queue, center)
+		return { vars = { } }
+	end,
+	calculate = function(self, card, context)
+    if context.setting_blind and not (context.blueprint_card or card).getting_sliced then
+      card.ability.planeswalker.has_activated_loyalty = false
+    end
   end
-}]]
+}
 
 --Celestial dawn
 SMODS.Joker {

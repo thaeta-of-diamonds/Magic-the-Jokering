@@ -1204,6 +1204,7 @@ return {
             mtg_whirler_ex = "Thop Thop",
             mtg_gain_energy = "Energize",
             b_take = "TAKE",
+            b_use = "USE",
 
             mtg_requires_restart = 'Requires game restart',
           
