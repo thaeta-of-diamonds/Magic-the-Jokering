@@ -1207,6 +1207,7 @@ return {
             mtg_buff_ex = "Buff",
             mtg_whirler_ex = "Thop Thop",
             mtg_gain_energy = "Energize",
+            mtg_obliterated = "OBLITERATED",
             b_take = "TAKE",
             b_use = "USE",
 

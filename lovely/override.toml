@@ -83,11 +83,10 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
-pattern = "ease_to = G.GAME.chips + math.floor(hand_chips*mult),"
+pattern = '''ease_to = G.GAME.chips + math.floor( SMODS.calculate_round_score() ),'''
 position = "at"
-payload = '''ease_to = G.GAME.chips + math.floor(hand_chips*mult) + math.floor(G.GAME.mtg_bonus_chips),
-'''
-match_indent = true
+payload = '''ease_to = G.GAME.chips + math.floor( SMODS.calculate_round_score() ) + math.floor(G.GAME.mtg_bonus_chips),'''
+match_indent = false
 
 # reset bonus damage
 [[patches]]
@@ -102,21 +101,19 @@ match_indent = true
 
 # Obliterate - don't lose
 [[patches]]
-[patches.regex]
+[patches.pattern]
 target = "functions/state_events.lua"
-pattern = '''game_over = false
-(?<indent>[\t ]*)end
-[\t ]*for i = 1, #G.jokers.cards do'''
-position = 'at'
-# match_indent = true
-line_prepend = '$indent'
-payload = '''
-game_over = false
+pattern = '''
+if G.GAME.chips - G.GAME.blind.chips >= 0 then
+	game_over = false
 end
+'''
+position = 'after'
+match_indent = false
+payload = '''
 if G.GAME.current_round.instant_win and game_over then
     game_over = false
 end
-for i = 1, #G.jokers.cards do
 '''
 
 # Obliterate - reset value at start of round
@@ -134,11 +131,10 @@ match_indent = true
 [[patches]]
 [patches.regex]
 target = "functions/common_events.lua"
-pattern = '''localize\('ph_mr_bones'\)..' '\}, colours = \{G.C.FILTER'''
+pattern = '''localize\('ph_mr_bones'\)'''
 position = 'at'
-match_indent = true
-line_prepend = ''
-payload = '''(G.GAME.current_round.instant_win and "OBLITERATED" or localize('ph_mr_bones'))..' '}, colours = {(G.C.FILTER)'''
+match_indent = false
+payload = '''(G.GAME.current_round.instant_win and localize('mtg_obliterated') or localize('ph_mr_bones'))'''
 
 [[patches]]
 [patches.pattern]
