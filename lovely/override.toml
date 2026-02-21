@@ -73,8 +73,10 @@ payload = '''
 			return true 
 		end
 	end
-	if suit == suit_suitless.key and next(SMODS.find_card("j_mtg_mycosynth_lattice")) then
-		return true
+	if MagicTheJokering.config.include_suitless_suit then
+		if suit == suit_suitless.key and next(SMODS.find_card("j_mtg_mycosynth_lattice")) then
+			return true
+		end
 	end
 '''
 match_indent = true

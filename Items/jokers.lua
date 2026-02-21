@@ -805,6 +805,7 @@ SMODS.Joker {
   end,
 }
 
+if MagicTheJokering.config.include_suitless_suit then
 -- mycosynth lattice
 SMODS.Joker {
   object_type = "Joker",
@@ -821,7 +822,9 @@ unlocked = false,
     return { }
   end
 }
+end
 
+if MagicTheJokering.config.include_suitless_suit then
 SMODS.Joker {
   object_type = "Joker",
   name = "mtg-cheif_of_the_foundry",
@@ -846,7 +849,9 @@ SMODS.Joker {
     end
   end
 }
+end
 
+if MagicTheJokering.config.include_suitless_suit then
 SMODS.Joker {
   name = "mtg-omarthis",
   key = "omarthis",
@@ -876,6 +881,7 @@ SMODS.Joker {
     end
   end
 }
+end
 
 --chromatic lantern
 SMODS.Joker { 

@@ -350,6 +350,46 @@ return {
                     },
                 },
             },
+            j_mtg_jace = {
+                name = "Jace",
+                text = {
+                    {
+                        "{C:attention}#3#{}: {C:attention}+#6#{} hand size",
+                        "this blind",
+                    },
+                    {
+                        "{C:attention}#4#{}: Draw your",
+                        "entire deck"
+                    },
+                    {
+                        "{C:attention}#5#{}: {C:attention}+#7#{} hand size"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
+            j_mtg_nicolbolas = {
+                name = "Nicol Bolas",
+                text = {
+                    {
+                        "{C:attention}#3#{}: Draw {C:attention}#6#{} cards",
+                        "and enchance them into {C:attention}Gold Cards ",
+                    },
+                    {
+                        "{C:attention}#4#{}: Deal {C:attention}#7#{} {C:red}damage{}",
+                            "to the blind",
+                    },
+                    {
+                        "{C:attention}#5#{}: {C:attention}Destroy{} the blind"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
             j_mtg_helmofawakening = {
                 name = "Helm of Awakening",
                 text = {
@@ -380,7 +420,7 @@ return {
             j_mtg_mycosynth_lattice = {
                 name = "Mycosynth Lattice",
                 text = {
-                    "All card are {C:white}suitless{} in addition to their other suits",
+                    "All card are {C:suitless}suitless{} in addition to their other suits",
                 },
 				unlock = {
 					"Win a run with",
@@ -390,20 +430,20 @@ return {
             j_mtg_cheif_of_the_foundry = {
                 name = "Chief of the Foundry",
                 text = {
-                    "Played {C:white}Suitless{} cards give",
+                    "Played {C:suitless}Suitless{} cards give",
                     "{C:mult}+#1#{} Mult when scored"
                 },
             },
             j_mtg_omarthis = {
                 name = "Omarthis, Ghostfire Initiate",
                 text = {
-                    "if scored card is {C:white}Suitless{} then",
+                    "if scored card is {C:suitless}Suitless{} then",
                     "increase the amount of chips this joker gives by {C:chips}+#2#{}",
                     "{C:inactive}currently {C:chips}+#1#{C:inactive} Chips",
                 },
 				unlock = {
 					"Have at least {C:attention}30{}",
-					"cards with the {C:white}Suitless{}",
+					"cards with the {C:suitless}Suitless{}",
 					"suit in your deck",
 				},
             },
@@ -624,7 +664,7 @@ return {
             m_mtg_Waste_land = {
                 name = "Wastes Land",
                 text = {
-                    "If enhanced card is {C:white}Suitless{}",
+                    "If enhanced card is {C:suitless}Suitless{}",
                     "Then this card gives {X:mult,C:white}X#1#{} Mult",
                     "Otherwise it will give {C:mult}+#2#{} Mult"
                 },
@@ -651,7 +691,7 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
-                    "to {C:white}Suitless{}"
+                    "to {C:suitless}Suitless{}"
                 },
             },
         },
@@ -947,7 +987,7 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
-                    "to {C:white}Suitless{}"
+                    "to {C:suitless}Suitless{}"
                 },
             },
         },
@@ -1215,7 +1255,10 @@ return {
           
             include_clover_suit = "Include Clovers",
             include_clover_suit_desc_1 = "Adds the Clovers suit",
-            include_clover_suit_desc_2 = "and associated cards"
+            include_clover_suit_desc_2 = "and associated cards",
+            include_suitless_suit = "Include Suitless",
+            include_suitless_suit_desc_1 = "Adds the Suitless suit",
+            include_suitless_suit_desc_2 = "and associated cards"
         },
         labels = {
             mtg_greedy_seal = "Greedy Seal",

@@ -170,13 +170,22 @@ SMODS.Atlas({
 	px = 71,
 	py = 95,
 })
+SMODS.Atlas({
+	object_type = "Atlas",
+	key = "mtg_planeswalkers",
+	path = "mtg_planeswalkers.png",
+	px = 71,
+	py = 95,
+})
 
 assert(SMODS.load_file("lib/utility.lua"))()
 assert(SMODS.load_file("lib/Damage.lua"))()
 assert(SMODS.load_file("lib/energy.lua"))()
-init_suitless()
 if MagicTheJokering.config.include_clover_suit then
 	init_clovers()
+end
+if MagicTheJokering.config.include_suitless_suit then
+	init_suitless()
 end
 update_ranks()
 assert(SMODS.load_file("Items/Magic.lua"))()
