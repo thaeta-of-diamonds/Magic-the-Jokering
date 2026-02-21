@@ -44,7 +44,7 @@ SMODS.Joker {
     object_type = "Joker",
     name = "mtg-ajani",
     key = "ajani",
-    pos = { x = 0, y = 7 },
+    pos = { x = 0, y = 0 },
     config = {
         extra = {
             ability_1_targets = 2,
@@ -54,10 +54,9 @@ SMODS.Joker {
             planeswalker = planeswalker_config(3)
         },
     },
-    order = 5,
-    rarity = 2,
-    cost = 8,
-    atlas = "mtg_atlas",
+    rarity = 4,
+    cost = 20,
+    atlas = "mtg_planeswalkers",
     loc_vars = function(self, info_queue, center)
         local info = planeswalker_loc_vars(center)
         table.insert(info, center.ability.extra.ability_1_targets)
@@ -114,6 +113,181 @@ SMODS.Joker {
                             end
                         }))
                     end
+                end
+            )
+        },
+    },
+}
+
+--Jace
+SMODS.Joker {
+    object_type = "Joker",
+    name = "mtg-jace",
+    key = "jace",
+    pos = { x = 2, y = 0 },
+    config = {
+        extra = {
+            ability_1_cards = 3,
+            ability_1_active = false,
+            ability_3_cards = 2,
+            planeswalker = planeswalker_config(3)
+        },
+    },
+    rarity = 4,
+    cost = 20,
+    atlas = "mtg_planeswalkers",
+    loc_vars = function(self, info_queue, center)
+        local info = planeswalker_loc_vars(center)
+        table.insert(info, center.ability.extra.ability_1_cards)
+        table.insert(info, center.ability.extra.ability_3_cards)
+        return { vars = info }
+    end,
+    calculate = function(self, card, context)
+        planeswalker_calculate(card, context)
+        if context.blind_defeated and not context.blueprint then
+            card.ability.ability_1_active = card.ability.ability_1_active or 0
+            if card.ability.ability_1_active > 0 then
+                G.hand:change_size(-math.floor(card.ability.extra.ability_1_cards) * card.ability.ability_1_active)
+                card.ability.ability_1_active = 0
+                return nil, true
+            end
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.ability_1_active then
+            G.hand:change_size(-math.floor(card.ability.extra.ability_1_cards) * card.ability.ability_1_active)
+            card.ability.ability_1_active = 0
+        end
+    end,
+    planeswalker = {
+        loyalty_abilities = {
+            planeswalker_loyalty_ability(
+                2,
+                function(card, loyalty_ability)
+                    return G.GAME.blind
+                end,
+                function(card, loyalty_ability)
+                    local bonus = math.floor(card.ability.extra.ability_1_cards)
+                    card.ability.ability_1_active = card.ability.ability_1_active or 0
+                    G.hand:change_size(bonus)
+                    card.ability.ability_1_active = card.ability.ability_1_active + 1
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.1,
+                        func = function()
+                            G.FUNCS.draw_from_deck_to_hand(bonus)
+                            return true
+                        end
+                    }))
+
+                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('mtg_draw_ex') })
+                end
+            ),
+            planeswalker_loyalty_ability(
+                -2,
+                function(card, loyalty_ability)
+                    local cards = #G.hand.cards
+                    return cards > 0
+                end,
+                function(card, loyalty_ability)
+                    -- Shoutout to Cryptid Mod, just using their implementation
+                    G.GAME.effarcire_buffer = true
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.draw_cards(#G.deck.cards)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.GAME.effarcire_buffer = nil
+                                    save_run()
+                                    return true
+                                end,
+                            }))
+                            return true
+                        end,
+                    }))
+
+                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('mtg_draw_ex') })
+                end
+            ),
+            planeswalker_loyalty_ability(
+                -7,
+                function(card, loyalty_ability)
+                    local cards = #G.hand.cards
+                    return cards > 0
+                end,
+                function(card, loyalty_ability)
+                    local bonus = math.floor(card.ability.extra.ability_3_cards)
+                    if G.hand then
+                        G.hand:change_size(bonus)
+                    end
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.1,
+                        func = function()
+                            G.FUNCS.draw_from_deck_to_hand(bonus)
+                            return true
+                        end
+                    }))
+
+                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('mtg_draw_ex') })
+                end
+            )
+        },
+    },
+}
+
+--Bolas
+SMODS.Joker {
+    object_type = "Joker",
+    name = "mtg-nicol-bolas",
+    key = "nicolbolas",
+    pos = { x = 1, y = 0 },
+    config = {
+        extra = {
+            ability_1_cards = 2,
+            ability_2_damage = 7,
+            planeswalker = planeswalker_config(5)
+        },
+    },
+    rarity = 4,
+    cost = 20,
+    atlas = "mtg_planeswalkers",
+    loc_vars = function(self, info_queue, center)
+        local info = planeswalker_loc_vars(center)
+        table.insert(info, center.ability.extra.ability_1_cards)
+        table.insert(info, center.ability.extra.ability_2_damage)
+        return { vars = info }
+    end,
+    calculate = function(self, card, context)
+        planeswalker_calculate(card, context)
+    end,
+    planeswalker = {
+        loyalty_abilities = {
+            planeswalker_loyalty_ability(
+                2,
+                function(card, loyalty_ability)
+                    return G.GAME.blind
+                end,
+                function(card, loyalty_ability)
+                    
+                end
+            ),
+            planeswalker_loyalty_ability(
+                -3,
+                function(card, loyalty_ability)
+                    return G.GAME.blind
+                end,
+                function(card, loyalty_ability)
+                    damage_blind(card, card.ability.extra.ability_2_damage)
+                end
+            ),
+            planeswalker_loyalty_ability(
+                -8,
+                function(card, loyalty_ability)
+                    return G.GAME.blind
+                end,
+                function(card, loyalty_ability)
+                    instant_win()
                 end
             )
         },

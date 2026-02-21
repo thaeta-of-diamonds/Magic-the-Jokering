@@ -330,6 +330,9 @@ function loc_colour(_c, _default)
 	  if MagicTheJokering.config.include_clover_suit then
 	  	G.ARGS.LOC_COLOURS.clover = G.C.SUITS[suit_clovers.key]
 	  end
+	  if MagicTheJokering.config.include_suitless_suit then
+	  	G.ARGS.LOC_COLOURS.suitless = G.C.SUITS[suit_suitless.key]
+	  end
 	  return lc(_c, _default)
 end
 
@@ -363,8 +366,8 @@ function init_suitless()
 		lc_ui_atlas = 'mtg_lc_ui',
 		pos = { y = 1 },
 		ui_pos = { x = 1, y = 1 },
-		hc_colour = HEX('FFFFFF'),
-		lc_colour = HEX('FFFFFF'),
+		hc_colour = HEX('E0E0E0'),
+		lc_colour = HEX('E0E0E0'),
 		in_pool = function(self, args)
 			if args and args.initial_deck then
 				return false
@@ -445,7 +448,7 @@ function Card:can_activate_loyalty_ability(index)
 	local ability = self:get_loyalty_ability(index)
 	if self.ability.extra.planeswalker.has_activated_loyalty then return false end
 	local loyalty = self.ability.extra.planeswalker.loyalty
-	if -1 * ability.cost + loyalty < 0 then return false end
+	if ability.cost + loyalty < 0 then return false end
 	local can_use = ability["can_use"]
 	return can_use(self, ability)
 end
@@ -485,7 +488,6 @@ G.FUNCS.use_loyalty = function(e)
 			return true
 		end,
 	}))
-	G.jokers:unhighlight_all()
 	if card.ability.extra.planeswalker.loyalty <= 0 then
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
@@ -591,7 +593,8 @@ SMODS.current_mod.config_tab = function()
     return {n=G.UIT.ROOT, config = {align = "cl", minh = G.ROOM.T.h*0.25, padding = 0.0, r = 0.1, colour = G.C.GREY}, nodes = {
         {n = G.UIT.R, config = { padding = 0.05 }, nodes = {
             {n = G.UIT.C, config = { minw = G.ROOM.T.w*0.25, padding = 0.05 }, nodes = {
-                create_toggle{ label = localize("include_clover_suit"), info = {localize("mtg_requires_restart"), localize("include_clover_suit_desc_1"), localize("include_clover_suit_desc_2")}, active_colour = MagicTheJokering.badge_colour, ref_table = MagicTheJokering.config, ref_value = "include_clover_suit" }
+                create_toggle{ label = localize("include_clover_suit"), info = {localize("mtg_requires_restart"), localize("include_clover_suit_desc_1"), localize("include_clover_suit_desc_2")}, active_colour = MagicTheJokering.badge_colour, ref_table = MagicTheJokering.config, ref_value = "include_clover_suit" },
+				create_toggle{ label = localize("include_suitless_suit"), info = {localize("mtg_requires_restart"), localize("include_suitless_suit_desc_1"), localize("include_suitless_suit_desc_2")}, active_colour = MagicTheJokering.badge_colour, ref_table = MagicTheJokering.config, ref_value = "include_suitless_suit" }
             }}
         }}
     }}

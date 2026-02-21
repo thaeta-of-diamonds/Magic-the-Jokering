@@ -341,6 +341,7 @@ SMODS.Consumable {
 }
 --]]
 
+if MagicTheJokering.config.include_suitless_suit then
 SMODS.Consumable {
     object_type = "Consumable",
     set = "Land",
@@ -388,6 +389,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
 }
+end
 
 
 -- will probably make this its own type and not an enhancment eventually 
@@ -515,6 +517,7 @@ Mountain_land = SMODS.Enhancement {
 }
 --]]
 
+if MagicTheJokering.config.include_suitless_suit then
 Waste_land = SMODS.Enhancement {
     object_type = "Enhancement",
     name = "mtg-Wastes_land",
@@ -537,6 +540,7 @@ Waste_land = SMODS.Enhancement {
         end
     end
 }
+end
 
 --[[
 Aether_Hub = SMODS.Enhancement {
