@@ -946,15 +946,18 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected",
-                    "{C:clover}Clover{} cards to {C:clover}Forest{} cards"
+                    "to {C:clover}Forest{} cards if their suits are {C:clover}Clovers",
+					"otherwise convert them to {C:clover}Clover{} cards"
                 },
             },
             c_mtg_island_land = {
                 name = "Island",
                 text = {
                 
-                    "Convert {C:attention}#1#{} selected {C:club}Club{} cards",
-                    "to {C:club}Island{} cards"
+                    "Converts up to",
+					"{C:attention}#1#{} selected card(s)",
+                    "to {C:club}Island{} cards if their suits are {C:club}Clubs",
+					"otherwise convert them to {C:club}Club{} cards"
                 },
             },
             c_mtg_mountain_land = {
@@ -971,7 +974,8 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
-                    "to {C:diamond}Diamonds{}"
+                    "to {C:diamond}Plains{}(s) if their suits are {C:diamond}Diamonds",
+					"otherwise convert them to {C:diamond}Diamond{}(s)"
                 },
             },
             c_mtg_swamp_land = {
@@ -979,7 +983,8 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
-                    "to {C:spade}Spades{}"
+                    "to {C:spade}Swamp{}(s) if their suits are {C:spade}Spades",
+					"otherwise convert them to {C:spade}Spade{}(s)"
                 },
             },
             c_mtg_waste_land = {
@@ -987,7 +992,8 @@ return {
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
-                    "to {C:suitless}Suitless{}"
+                    "to {C:white}Wastes{} if their suits are {C:white}Suitless{}",
+					"otherwise convert them to {C:white}Suitless{} cards"
                 },
             },
         },
