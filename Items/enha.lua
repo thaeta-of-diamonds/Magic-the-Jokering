@@ -680,6 +680,7 @@ token_squirrel.force_suit = suit_clovers.key
 --]]
 end
 
+--[[
 token_thopter = SMODS.Enhancement {
     object_type = "Enhancement",
     key = "thopter",
@@ -702,6 +703,7 @@ token_thopter.force_value = "2"
 if MagicTheJokering.config.include_suitless_suit then
 token_thopter.force_suit = suit_suitless.key
 end
+--]]
 
 -- [[
 -- works as intended

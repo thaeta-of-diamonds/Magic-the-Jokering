@@ -770,6 +770,7 @@ SMODS.Joker {
 end
 
 --Whirler Virtuoso
+--[[
 SMODS.Joker {
   object_type = "joker",
   name = "Whirler Virtuoso",
@@ -804,7 +805,7 @@ SMODS.Joker {
     end
   end,
 }
-
+--]]
 if MagicTheJokering.config.include_suitless_suit then
 -- mycosynth lattice
 SMODS.Joker {
@@ -1001,7 +1002,7 @@ SMODS.Joker {
   end
 }
 
--- [[
+--[[
 --Decoction Module
 SMODS.Joker {
   object_type = "Joker",
