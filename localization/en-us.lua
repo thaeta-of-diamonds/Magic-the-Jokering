@@ -10,6 +10,158 @@ return {
             },
         },
         Joker = {
+            j_mtg_ajani = {
+                name = "Ajani",
+                text = {
+                    {
+                        "{C:attention}#3#{}: {C:attention}#6#{} selected cards get",
+                        "{C:attention}+#7#{} rank",
+                    },
+                    {
+                        "{C:attention}#4#{}: Each card in your hand gets",
+                        "{C:attention}+#8#{} rank and each other",
+                        "Planeswalker gets {C:attention}+#9#{} loyalty"
+                    },
+                    {
+                        "{C:attention}#5#{}: Apply a {C:red}Red Seal{} to",
+                        "each card in your hand"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
+            j_mtg_jace = {
+                name = "Jace",
+                text = {
+                    {
+                        "{C:attention}#3#{}: {C:attention}+#6#{} hand size",
+                        "this blind",
+                    },
+                    {
+                        "{C:attention}#4#{}: Draw your",
+                        "entire deck"
+                    },
+                    {
+                        "{C:attention}#5#{}: {C:attention}+#7#{} hand size"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
+            j_mtg_nicolbolas = {
+                name = "Nicol Bolas",
+                text = {
+                    {
+                        "{C:attention}#3#{}: Draw {C:attention}#6#{} cards",
+                        "and enchance them into {C:attention}Gold Cards ",
+                    },
+                    {
+                        "{C:attention}#4#{}: Deal {C:attention}#7#{} {C:red}damage{}",
+                            "to the blind",
+                    },
+                    {
+                        "{C:attention}#5#{}: {C:attention}Destroy{} the blind"
+                    },
+                    {
+                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
+                        "{B:1,C:white,s:0.8}#2#"
+                    },
+                },
+            },
+            j_mtg_celestialdawn = {
+                name = "Celestial Dawn",
+                text = {
+                    "Cards are considered to be {C:diamond}Diamonds{}",
+                    "in addition to its other suits"
+                },
+				unlock = {
+					"Win a run with {C:attention}Rough Gem",
+				},
+            },
+            j_mtg_firstresponse = {
+                name = "First Response",
+                text = {
+                    "When round begins,",
+                    "add a {C:diamond}Soldier{}",
+                    "to your hand"
+                },
+            },
+            j_mtg_lightfromwithin = {
+                name = "Light from Within",
+                text = {
+                    "Played cards with with {C:diamond}Diamond{} suit give",
+                    "Mult equal to their rank when scored"
+                },
+            },
+            j_mtg_ruleoflaw = {
+                name = "Rule of Law",
+                text = {
+                    "Play only {C:attention}#1#{} hand",
+                    "per round",
+                    "{C:red}X#2#{} {C:attention}Blind{} size"
+                },
+            },
+            j_mtg_etheriumsculptor = {
+                name = "Etherium Sculptor",
+                text = {
+                    "Played {C:attention}Steel{} cards give",
+                    "{C:chips}+#1#{} Chips when scored"
+                },
+            },
+            j_mtg_harbinger = {
+                name = "Harbinger of the Seas",
+                text = {
+                    "Cards are considered to be {C:club}Clubs{}",
+                    "in addition to its other suits"
+                },
+				unlock = {
+					"Win a run with {C:attention}Onyx Agate",
+				},
+            },
+            j_mtg_jokulmorder = {
+                name = "Jokulmorder",
+                text = {
+                    "{C:red}Slumber{} until you discard",
+                    "{C:attention}#1#{} {C:club}Clubs{} at the same time",
+                    "While awoken, played cards with {C:club}Club{}",
+                    "suit give {X:mult,C:white} X#2# {} Mult when scored"
+                },
+            },
+            j_mtg_labman = {
+                name = "Laboratory Maniac",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult if {C:red}no{} cards",
+                    "remaining in {C:attention}deck{}"
+                },
+            },
+            j_mtg_omniscience = {
+                name = "Omniscience",
+                text = {
+                    "{C:attention}Jokers{}",
+                    "are {C:green}free{}"
+                },
+            },
+            j_mtg_evincar = {
+                name = "Ascendant Evincar",
+                text = {
+                    "Played cards with {C:spade}Spade{} suit",
+                    "give {C:mult}+#1#{} Mult when scored",
+                    "Played cards without {C:spade}Spade{} suit",
+                    "give {C:mult}-#2#{} Mult when scored",
+                },
+            },
+            j_mtg_relentlessrats = {
+                name = "Relentless Rats",
+                text = {
+                    "{C:mult}+#1#{} Mult for each {C:attention}Joker{}",
+                    "named {C:attention}Relentless Rats{}",
+                    "{C:red}Relentless{}"
+                },
+            },
             j_mtg_doublingseason = {
                 name = 'Doubling Season',
                 text = {
@@ -28,20 +180,6 @@ return {
                     "{C:mult}+#1#{} Mult when scored",
                 },
             },
-            j_mtg_labman = {
-                name = "Laboratory Maniac",
-                text = {
-                    "{X:mult,C:white} X#1# {} Mult if {C:red}no{} cards",
-                    "remaining in {C:attention}deck{}"
-                },
-            },
-            j_mtg_etheriumsculptor = {
-                name = "Etherium Sculptor",
-                text = {
-                    "Played {C:attention}Steel{} cards give",
-                    "{C:chips}+#1#{} Chips when scored"
-                },
-            },
             j_mtg_dreamstonehedron = {
                 name = "Dreamstone Hedron",
                 text = {
@@ -49,13 +187,6 @@ return {
                     "end of round",
                     "Sell this {C:attention}Joker{} to",
                     "draw {C:attention}#2#{} cards"
-                },
-            },
-            j_mtg_omniscience = {
-                name = "Omniscience",
-                text = {
-                    "{C:attention}Jokers{}",
-                    "are {C:green}free{}"
                 },
             },
             j_mtg_bushwacker = {
@@ -122,14 +253,6 @@ return {
                     "{C:diamond}Diamonds{} or {C:clover}Clovers{}"
                 },
             },
-            j_mtg_ruleoflaw = {
-                name = "Rule of Law",
-                text = {
-                    "Play only {C:attention}#1#{} hand",
-                    "per round",
-                    "{C:red}X#2#{} {C:attention}Blind{} size"
-                },
-            },
             j_mtg_wastenot = {
                 name = "Waste Not",
                 text = {
@@ -139,15 +262,6 @@ return {
                     "for each discarded {C:attention}face{} card",
                     "and draw {C:attention}#3#{} cards for each",
                     "discarded {C:red}non{}-{C:attention}Ace{} {C:red}non{}-{C:attention}face{} card"
-                },
-            },
-            j_mtg_jokulmorder = {
-                name = "Jokulmorder",
-                text = {
-                    "{C:red}Slumber{} until you discard",
-                    "{C:attention}#1#{} {C:club}Clubs{} at the same time",
-                    "While awoken, played cards with {C:club}Club{}",
-                    "suit give {X:mult,C:white} X#2# {} Mult when scored"
                 },
             },
             j_mtg_yavimaya = {
@@ -168,26 +282,6 @@ return {
                 },
 				unlock = {
 					"Win a run with {C:attention}Arrowhead",
-				},
-            },
-            j_mtg_celestialdawn = {
-                name = "Celestial Dawn",
-                text = {
-                    "Cards are considered to be {C:diamond}Diamonds{}",
-                    "in addition to its other suits"
-                },
-				unlock = {
-					"Win a run with {C:attention}Rough Gem",
-				},
-            },
-            j_mtg_harbinger = {
-                name = "Harbinger of the Seas",
-                text = {
-                    "Cards are considered to be {C:club}Clubs{}",
-                    "in addition to its other suits"
-                },
-				unlock = {
-					"Win a run with {C:attention}Onyx Agate",
 				},
             },
             j_mtg_bloodmoon = {
@@ -231,31 +325,6 @@ return {
                     "get {C:attention}+#1#{} rank when scored"
                 },
             },
-            j_mtg_evincar = {
-                name = "Ascendant Evincar",
-                text = {
-                    "Played cards with {C:spade}Spade{} suit",
-                    "give {C:mult}+#1#{} Mult when scored",
-                    "Played cards without {C:spade}Spade{} suit",
-                    "give {C:mult}-#2#{} Mult when scored",
-                },
-            },
-            j_mtg_relentlessrats = {
-                name = "Relentless Rats",
-                text = {
-                    "{C:mult}+#1#{} Mult for each {C:attention}Joker{}",
-                    "named {C:attention}Relentless Rats{}",
-                    "{C:red}Relentless{}"
-                },
-            },
-            j_mtg_firstresponse = {
-                name = "First Response",
-                text = {
-                    "When round begins,",
-                    "add a {C:diamond}Soldier{}",
-                    "to your hand"
-                },
-            },
             j_mtg_urzamine = {
                 name = "Urza's Mine",
                 text = {
@@ -278,13 +347,6 @@ return {
                     "{X:mult,C:white} X#1# {} Mult",
                     "{X:mult,C:white} X#2# {} Mult instead if you have",
                     "{C:attention}Urza's Mine{} and {C:attention}Urza's Power Plant{}"
-                },
-            },
-            j_mtg_lightfromwithin = {
-                name = "Light from Within",
-                text = {
-                    "Played cards with with {C:diamond}Diamond{} suit give",
-                    "Mult equal to their rank when scored"
                 },
             },
             j_mtg_lantern = {
@@ -326,68 +388,6 @@ return {
                     "Played cards give {C:mult}+#1#{} Mult when scored",
                     "{C:attention}Destroy{} the {C:attention}lowest{} ranked card",
                     "held in hand when hand played"
-                },
-            },
-            j_mtg_ajani = {
-                name = "Ajani",
-                text = {
-                    {
-                        "{C:attention}#3#{}: {C:attention}#6#{} selected cards get",
-                        "{C:attention}+#7#{} rank",
-                    },
-                    {
-                        "{C:attention}#4#{}: Each card in your hand gets",
-                        "{C:attention}+#8#{} rank and each other",
-                        "Planeswalker gets {C:attention}+#9#{} loyalty"
-                    },
-                    {
-                        "{C:attention}#5#{}: Apply a {C:red}Red Seal{} to",
-                        "each card in your hand"
-                    },
-                    {
-                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
-                        "{B:1,C:white,s:0.8}#2#"
-                    },
-                },
-            },
-            j_mtg_jace = {
-                name = "Jace",
-                text = {
-                    {
-                        "{C:attention}#3#{}: {C:attention}+#6#{} hand size",
-                        "this blind",
-                    },
-                    {
-                        "{C:attention}#4#{}: Draw your",
-                        "entire deck"
-                    },
-                    {
-                        "{C:attention}#5#{}: {C:attention}+#7#{} hand size"
-                    },
-                    {
-                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
-                        "{B:1,C:white,s:0.8}#2#"
-                    },
-                },
-            },
-            j_mtg_nicolbolas = {
-                name = "Nicol Bolas",
-                text = {
-                    {
-                        "{C:attention}#3#{}: Draw {C:attention}#6#{} cards",
-                        "and enchance them into {C:attention}Gold Cards ",
-                    },
-                    {
-                        "{C:attention}#4#{}: Deal {C:attention}#7#{} {C:red}damage{}",
-                            "to the blind",
-                    },
-                    {
-                        "{C:attention}#5#{}: {C:attention}Destroy{} the blind"
-                    },
-                    {
-                        "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
-                        "{B:1,C:white,s:0.8}#2#"
-                    },
                 },
             },
             j_mtg_helmofawakening = {
