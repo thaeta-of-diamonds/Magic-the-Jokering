@@ -673,16 +673,31 @@ SMODS.Joker {
 			}
 		end
 		if context.cardarea == G.play and context.individual and not context.blueprint and not context.repetition then
-      if context.other_card:is_suit(suit_clovers.key) then
-        card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.extra
-        return {
-          extra = { focus = card, message = localize("k_upgrade_ex") },
-          card = card,
-          colour = G.C.MULT,
-        }
-      end
+			if context.other_card:is_suit(suit_clovers.key) then
+				card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.extra
+				return {
+					extra = { focus = card, message = localize("k_upgrade_ex") },
+          			card = card,
+          			colour = G.C.MULT,
+        		}
+      		end
 		end
 	end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 30, localize(suit_clovers.key, 'suits_singular') } }
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'modify_deck' then
+            local count = 0
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if playing_card.base.suit == suit_clovers.key then count = count + 1 end
+                if count >= 30 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
 }
 
 --yavimaya
@@ -702,7 +717,18 @@ unlocked = false,
   config = {},
   loc_vars = function(self, info_queue, card)
     return { }
-  end
+  end,
+	check_for_unlock = function(self, args)
+		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+			if v.key == "j_mtg_primalcrux" then
+				if get_joker_win_sticker(v, true) >= 8 then
+					return true
+				end
+				break
+			end
+		end
+		return false
+	end,
 }
 
 --Goblin Anarchomancer
@@ -880,7 +906,22 @@ SMODS.Joker {
         card = card
       }
     end
-  end
+  end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 30, localize(suit_suitless.key, 'suits_singular') } }
+    end,
+    check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_deck', extra = { count = 30, suit = 'Diamonds' } }`
+        if args.type == 'modify_deck' then
+            local count = 0
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if playing_card.base.suit == suit_suitless.key then count = count + 1 end
+                if count >= 30 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
 }
 end
 
