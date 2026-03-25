@@ -162,6 +162,78 @@ return {
                     "{C:red}Relentless{}"
                 },
             },
+            j_mtg_urborg = {
+                name = "Urborg, Tomb of Yawgmoth",
+                text = {
+                    "Cards are considered to be {C:spade}Spades{}",
+                    "in addition to its other suits"
+                },
+				unlock = {
+					"Win a run with {C:attention}Arrowhead",
+				},
+            },
+            j_mtg_wastenot = {
+                name = "Waste Not",
+                text = {
+                    "During {C:attention}first discard{} of round,",
+                    "earn {C:money}$#1#{} for each discarded {C:attention}Ace{},",
+                    "deal {C:attention}#2#{} {C:red}damage{} to the blind",
+                    "for each discarded {C:attention}face{} card",
+                    "and draw {C:attention}#3#{} cards for each",
+                    "discarded {C:red}non{}-{C:attention}Ace{} {C:red}non{}-{C:attention}face{} card"
+                },
+            },
+            j_mtg_bloodmoon = {
+                name = "Blood Moon",
+                text = {
+                    "Cards are considered to be {C:heart}Hearts{}",
+                    "in addition to its other suits"
+                },
+				unlock = {
+					"Win a run with {C:attention}Bloodstone",
+				},
+            },
+            j_mtg_emancipation = {
+                name = "Fiery Emancipation",
+                text = {
+                    "If another source would deal {C:red}damage{},",
+                    "it deals {C:attentoin}triple{} that {C:red}damage{} instead"
+                },
+            },
+            j_mtg_bushwacker = {
+                name = "Reckless Bushwacker",
+                text = {
+                    "Played cards give",
+                    "{C:mult}+#1#{} Mult when scored",
+                    "on {C:attention}first hand{} of round"
+                },
+            },
+            j_mtg_vortex = {
+                name = "Sulfuric Vortex",
+                text = {
+                    "Deal {C:attention}#1#{} {C:red}damage{} to the blind,",
+                    "and {C:attention}#2#{} {C:red}damage{} to a random card",
+                    "held in hand when hand played"
+                },
+            },
+            j_mtg_torbran = {
+                name = "Torbran, Thane of Red Fell",
+                text = {
+                    "If played hand contains a {C:heart}Heart{},",
+                    "deal {C:attention}#1#{} {C:red}damage{} to the blind",
+                    "If another source would deal {C:red}damage{},",
+                    "it deals that much {C:red}damage{} plus {C:attention}#2#{} instead"
+                },
+            },
+            j_mtg_beastmaster = {
+                name = "Beastmaster Ascension",
+                text = {
+                    "After {C:attention}#1#{} hands played,",
+                    "played cards give {C:chips}+#2#{} Chips",
+                    "and {C:mult}+#3#{} Mult when scored",
+                    "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#1#){}"
+                },
+            },
             j_mtg_doublingseason = {
                 name = 'Doubling Season',
                 text = {
@@ -173,36 +245,12 @@ return {
 					"With the {C:clover}Clover{} suit",
 				},
             },
-            j_mtg_mightstone = {
-                name = "Mightstone",
+            j_mtg_hardenedscales = {
+                name = "Hardened Scales",
                 text = {
-                    "Played cards give",
-                    "{C:mult}+#1#{} Mult when scored",
-                },
-            },
-            j_mtg_dreamstonehedron = {
-                name = "Dreamstone Hedron",
-                text = {
-                    "Earn {C:money}$#1#{} at",
-                    "end of round",
-                    "Sell this {C:attention}Joker{} to",
-                    "draw {C:attention}#2#{} cards"
-                },
-            },
-            j_mtg_bushwacker = {
-                name = "Reckless Bushwacker",
-                text = {
-                    "Played cards give",
-                    "{C:mult}+#1#{} Mult when scored",
-                    "on {C:attention}first hand{} of round"
-                },
-            },
-            j_mtg_anarchomancer = {
-                name = "Goblin Anarchomancer",
-                text = {
-                    "Played cards with {C:heart}Heart{}",
-                    "or {C:clover}Clover{} suit give",
-                    "{C:chips}+#1#{} Chips when scored "
+                    "If you would increase the",
+                    "rank of a card, increase it",
+                    "by that much {C:attention}plus one{} instead"
                 },
             },
             j_mtg_ivylanedenizen = {
@@ -227,6 +275,58 @@ return {
 					"suit in your deck",
 				},
             },
+            j_mtg_yavimaya = {
+                name = "Yavimaya, Cradle of Growth",
+                text = {
+                    "Cards are considered to be {C:clover}Clovers{}",
+                    "in addition to its other suits"
+                },
+				unlock = {
+					"Win a run with {C:attention}Primalcrux",
+				},
+            },
+            j_mtg_anarchomancer = {
+                name = "Goblin Anarchomancer",
+                text = {
+                    "Played cards with {C:heart}Heart{}",
+                    "or {C:clover}Clover{} suit give",
+                    "{C:chips}+#1#{} Chips when scored "
+                },
+            },
+            j_mtg_knotvine = {
+                name = "Knotvine Mystic",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult if all cards",
+                    "held in hand are {C:heart}Hearts{},",
+                    "{C:diamond}Diamonds{} or {C:clover}Clovers{}"
+                },
+            },
+            j_mtg_mycosynth_lattice = {
+                name = "Mycosynth Lattice",
+                text = {
+                    "All card are {C:suitless}suitless{} in addition to their other suits",
+                },
+				unlock = {
+					"Win a run with",
+					"{C:attention}Omarthis, Ghostfire Initiate",
+				},
+            },
+            j_mtg_mightstone = {
+                name = "Mightstone",
+                text = {
+                    "Played cards give",
+                    "{C:mult}+#1#{} Mult when scored",
+                },
+            },
+            j_mtg_dreamstonehedron = {
+                name = "Dreamstone Hedron",
+                text = {
+                    "Earn {C:money}$#1#{} at",
+                    "end of round",
+                    "Sell this {C:attention}Joker{} to",
+                    "draw {C:attention}#2#{} cards"
+                },
+            },
             j_mtg_chromaticlantern = {
                 name = "Chromatic Lantern",
                 text = {
@@ -243,79 +343,6 @@ return {
                     "This {C:attention}Joker{} gains {C:mult}+#1#{} Mult",
                     "if played hand contains a {C:clover}Clover{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
-                },
-            },
-            j_mtg_knotvine = {
-                name = "Knotvine Mystic",
-                text = {
-                    "{X:mult,C:white} X#1# {} Mult if all cards",
-                    "held in hand are {C:heart}Hearts{},",
-                    "{C:diamond}Diamonds{} or {C:clover}Clovers{}"
-                },
-            },
-            j_mtg_wastenot = {
-                name = "Waste Not",
-                text = {
-                    "During {C:attention}first discard{} of round,",
-                    "earn {C:money}$#1#{} for each discarded {C:attention}Ace{},",
-                    "deal {C:attention}#2#{} {C:red}damage{} to the blind",
-                    "for each discarded {C:attention}face{} card",
-                    "and draw {C:attention}#3#{} cards for each",
-                    "discarded {C:red}non{}-{C:attention}Ace{} {C:red}non{}-{C:attention}face{} card"
-                },
-            },
-            j_mtg_yavimaya = {
-                name = "Yavimaya, Cradle of Growth",
-                text = {
-                    "Cards are considered to be {C:clover}Clovers{}",
-                    "in addition to its other suits"
-                },
-				unlock = {
-					"Win a run with {C:attention}Primalcrux",
-				},
-            },
-            j_mtg_urborg = {
-                name = "Urborg, Tomb of Yawgmoth",
-                text = {
-                    "Cards are considered to be {C:spade}Spades{}",
-                    "in addition to its other suits"
-                },
-				unlock = {
-					"Win a run with {C:attention}Arrowhead",
-				},
-            },
-            j_mtg_bloodmoon = {
-                name = "Blood Moon",
-                text = {
-                    "Cards are considered to be {C:heart}Hearts{}",
-                    "in addition to its other suits"
-                },
-				unlock = {
-					"Win a run with {C:attention}Bloodstone",
-				},
-            },
-            j_mtg_emancipation = {
-                name = "Fiery Emancipation",
-                text = {
-                    "If another source would deal {C:red}damage{},",
-                    "it deals {C:attentoin}triple{} that {C:red}damage{} instead"
-                },
-            },
-            j_mtg_hardenedscales = {
-                name = "Hardened Scales",
-                text = {
-                    "If you would increase the",
-                    "rank of a card, increase it",
-                    "by that much {C:attention}plus one{} instead"
-                },
-            },
-            j_mtg_torbran = {
-                name = "Torbran, Thane of Red Fell",
-                text = {
-                    "If played hand contains a {C:heart}Heart{},",
-                    "deal {C:attention}#1#{} {C:red}damage{} to the blind",
-                    "If another source would deal {C:red}damage{},",
-                    "it deals that much {C:red}damage{} plus {C:attention}#2#{} instead"
                 },
             },
             j_mtg_baru = {
@@ -356,23 +383,6 @@ return {
                     "top card of your deck to Mult",
                     "{C:inactive}(Currently adding {C:mult}+#2#{} {C:inactive}Mult){}",
                     "{C:inactive}(Top card is {C:attention}#3#{C:inactive}){}"
-                },
-            },
-            j_mtg_beastmaster = {
-                name = "Beastmaster Ascension",
-                text = {
-                    "After {C:attention}#1#{} hands played,",
-                    "played cards give {C:chips}+#2#{} Chips",
-                    "and {C:mult}+#3#{} Mult when scored",
-                    "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#1#){}"
-                },
-            },
-            j_mtg_vortex = {
-                name = "Sulfuric Vortex",
-                text = {
-                    "Deal {C:attention}#1#{} {C:red}damage{} to the blind,",
-                    "and {C:attention}#2#{} {C:red}damage{} to a random card",
-                    "held in hand when hand played"
                 },
             },
             j_mtg_powermatrix = {
@@ -416,16 +426,6 @@ return {
                     "When a card is scored gain",
                     "{C:attention}#1#{} {C:dark_edition}energy{}",
                 },
-            },
-            j_mtg_mycosynth_lattice = {
-                name = "Mycosynth Lattice",
-                text = {
-                    "All card are {C:suitless}suitless{} in addition to their other suits",
-                },
-				unlock = {
-					"Win a run with",
-					"{C:attention}Omarthis, Ghostfire Initiate",
-				},
             },
             j_mtg_cheif_of_the_foundry = {
                 name = "Chief of the Foundry",
