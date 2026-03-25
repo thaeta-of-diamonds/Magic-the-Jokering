@@ -311,21 +311,25 @@ return {
 					"{C:attention}Omarthis, Ghostfire Initiate",
 				},
             },
-            j_mtg_mightstone = {
-                name = "Mightstone",
+            j_mtg_cheif_of_the_foundry = {
+                name = "Chief of the Foundry",
                 text = {
-                    "Played cards give",
-                    "{C:mult}+#1#{} Mult when scored",
+                    "Played {C:suitless}Suitless{} cards give",
+                    "{C:mult}+#1#{} Mult when scored"
                 },
             },
-            j_mtg_dreamstonehedron = {
-                name = "Dreamstone Hedron",
+            j_mtg_omarthis = {
+                name = "Omarthis, Ghostfire Initiate",
                 text = {
-                    "Earn {C:money}$#1#{} at",
-                    "end of round",
-                    "Sell this {C:attention}Joker{} to",
-                    "draw {C:attention}#2#{} cards"
+                    "if scored card is {C:suitless}Suitless{} then",
+                    "increase the amount of chips this joker gives by {C:chips}+#2#{}",
+                    "{C:inactive}currently {C:chips}+#1#{C:inactive} Chips",
                 },
+				unlock = {
+					"Have at least {C:attention}30{}",
+					"cards with the {C:suitless}Suitless{}",
+					"suit in your deck",
+				},
             },
             j_mtg_chromaticlantern = {
                 name = "Chromatic Lantern",
@@ -337,19 +341,57 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"
                 },
             },
-            j_mtg_yorvo = {
-                name = "Yorvo, Lord of Garenbrig",
+            j_mtg_eldrazimonument = {
+                name = "Eldrazi Monument",
                 text = {
-                    "This {C:attention}Joker{} gains {C:mult}+#1#{} Mult",
-                    "if played hand contains a {C:clover}Clover{}",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                    "Played cards give {C:mult}+#1#{} Mult when scored",
+                    "{C:attention}Destroy{} the {C:attention}lowest{} ranked card",
+                    "held in hand when hand played"
                 },
             },
-            j_mtg_baru = {
-                name = "Baru, Fist of Krosa",
+            j_mtg_panharmonicon = {
+                name = "Panharmonicon",
                 text = {
-                    "Played cards with a {C:clover}Clover{} suit",
-                    "get {C:attention}+#1#{} rank when scored"
+                    "When a card is scored, it scores again"
+                },
+            },
+            j_mtg_dreamstonehedron = {
+                name = "Dreamstone Hedron",
+                text = {
+                    "Earn {C:money}$#1#{} at",
+                    "end of round",
+                    "Sell this {C:attention}Joker{} to",
+                    "draw {C:attention}#2#{} cards"
+                },
+            },
+            j_mtg_mightstone = {
+                name = "Mightstone",
+                text = {
+                    "Played cards give",
+                    "{C:mult}+#1#{} Mult when scored",
+                },
+            },
+            j_mtg_helmofawakening = {
+                name = "Helm of Awakening",
+                text = {
+                    "Items in shop",
+                    "cost {C:money}$#1#{} less"
+                },
+            },
+            j_mtg_lantern = {
+                name = "Lantern of Insight",
+                text = {
+                    "Adds {C:attention}double{} the rank of the",
+                    "top card of your deck to Mult",
+                    "{C:inactive}(Currently adding {C:mult}+#2#{} {C:inactive}Mult){}",
+                    "{C:inactive}(Top card is {C:attention}#3#{C:inactive}){}"
+                },
+            },
+            j_mtg_powermatrix = {
+                name = "Power Matrix",
+                text = {
+                    "If {C:attention}first discard{} of round has only {C:attention}1{} card,",
+                    "give it {C:attention}+#1#{} rank and a random {C:attention}Enhancement{}"
                 },
             },
             j_mtg_urzamine = {
@@ -376,35 +418,19 @@ return {
                     "{C:attention}Urza's Mine{} and {C:attention}Urza's Power Plant{}"
                 },
             },
-            j_mtg_lantern = {
-                name = "Lantern of Insight",
+            j_mtg_yorvo = {
+                name = "Yorvo, Lord of Garenbrig",
                 text = {
-                    "Adds {C:attention}double{} the rank of the",
-                    "top card of your deck to Mult",
-                    "{C:inactive}(Currently adding {C:mult}+#2#{} {C:inactive}Mult){}",
-                    "{C:inactive}(Top card is {C:attention}#3#{C:inactive}){}"
+                    "This {C:attention}Joker{} gains {C:mult}+#1#{} Mult",
+                    "if played hand contains a {C:clover}Clover{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 },
             },
-            j_mtg_powermatrix = {
-                name = "Power Matrix",
+            j_mtg_baru = {
+                name = "Baru, Fist of Krosa",
                 text = {
-                    "If {C:attention}first discard{} of round has only {C:attention}1{} card,",
-                    "give it {C:attention}+#1#{} rank and a random {C:attention}Enhancement{}"
-                },
-            },
-            j_mtg_eldrazimonument = {
-                name = "Eldrazi Monument",
-                text = {
-                    "Played cards give {C:mult}+#1#{} Mult when scored",
-                    "{C:attention}Destroy{} the {C:attention}lowest{} ranked card",
-                    "held in hand when hand played"
-                },
-            },
-            j_mtg_helmofawakening = {
-                name = "Helm of Awakening",
-                text = {
-                    "Items in shop",
-                    "cost {C:money}$#1#{} less"
+                    "Played cards with a {C:clover}Clover{} suit",
+                    "get {C:attention}+#1#{} rank when scored"
                 },
             },
             j_mtg_whirler = {
@@ -414,38 +440,12 @@ return {
                     "Add a {C:attention}Thopter{} to your hand"
                 },
             },
-            j_mtg_panharmonicon = {
-                name = "Panharmonicon",
-                text = {
-                    "When a card is scored, it scores again"
-                },
-            },
             j_mtg_decoction ={
                 name = "Decoction Module",
                 text = {
                     "When a card is scored gain",
                     "{C:attention}#1#{} {C:dark_edition}energy{}",
                 },
-            },
-            j_mtg_cheif_of_the_foundry = {
-                name = "Chief of the Foundry",
-                text = {
-                    "Played {C:suitless}Suitless{} cards give",
-                    "{C:mult}+#1#{} Mult when scored"
-                },
-            },
-            j_mtg_omarthis = {
-                name = "Omarthis, Ghostfire Initiate",
-                text = {
-                    "if scored card is {C:suitless}Suitless{} then",
-                    "increase the amount of chips this joker gives by {C:chips}+#2#{}",
-                    "{C:inactive}currently {C:chips}+#1#{C:inactive} Chips",
-                },
-				unlock = {
-					"Have at least {C:attention}30{}",
-					"cards with the {C:suitless}Suitless{}",
-					"suit in your deck",
-				},
             },
         },
         Enhanced = {
