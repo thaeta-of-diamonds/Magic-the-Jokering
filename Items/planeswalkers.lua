@@ -44,6 +44,7 @@ SMODS.Joker {
     object_type = "Joker",
     name = "mtg-ajani",
     key = "ajani",
+	unlocked = false,
     pos = { x = 0, y = 0 },
     config = {
         extra = {
@@ -124,6 +125,7 @@ SMODS.Joker {
     object_type = "Joker",
     name = "mtg-jace",
     key = "jace",
+	unlocked = false,
     pos = { x = 2, y = 0 },
     config = {
         extra = {
@@ -241,6 +243,7 @@ SMODS.Joker {
     object_type = "Joker",
     name = "mtg-nicol-bolas",
     key = "nicolbolas",
+	unlocked = false,
     pos = { x = 1, y = 0 },
     config = {
         extra = {

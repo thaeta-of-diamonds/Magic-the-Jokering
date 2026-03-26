@@ -31,6 +31,9 @@ return {
                         "{B:1,C:white,s:0.8}#2#"
                     },
                 },
+                unlock = {
+                    "{E:1,s:1.3}?????",
+                },
             },
             j_mtg_jace = {
                 name = "Jace",
@@ -51,6 +54,9 @@ return {
                         "{B:1,C:white,s:0.8}#2#"
                     },
                 },
+                unlock = {
+                    "{E:1,s:1.3}?????",
+                },
             },
             j_mtg_nicolbolas = {
                 name = "Nicol Bolas",
@@ -70,6 +76,9 @@ return {
                         "{s:1.2}Loyalty:{} {C:attention,s:1.2}#1#{}",
                         "{B:1,C:white,s:0.8}#2#"
                     },
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
                 },
             },
             j_mtg_celestialdawn = {

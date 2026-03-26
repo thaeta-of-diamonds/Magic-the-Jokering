@@ -184,7 +184,7 @@ SMODS.Joker {
 	key = "jokulmorder",
 	pos = { x = 6, y = 2 },
 	config = { extra = {awoken = false, required = 5, power = 2}},
-  order = 4,
+	order = 4,
 	rarity = 2,
 	cost = 7,
 	atlas = "mtg_atlas",
@@ -193,14 +193,14 @@ SMODS.Joker {
 		return { vars = {center.ability.extra.required, center.ability.extra.power}}
 	end,
 	calculate = function(self, card, context)
-  if context.pre_discard then
-    local suits = {
-      ['Clubs'] = 0
-  }
-  for k, v in ipairs(context.full_hand) do
-    if v:is_suit('Clubs') then suits["Clubs"] = suits["Clubs"] + 1 end
-  end
-   if suits["Clubs"] >= card.ability.extra.required and card.ability.extra.awoken == false then
+	if context.pre_discard then
+    	local suits = {
+    		['Clubs'] = 0
+		}
+		for k, v in ipairs(context.full_hand) do
+    		if v:is_suit('Clubs') then suits["Clubs"] = suits["Clubs"] + 1 end
+	end
+	if suits["Clubs"] >= card.ability.extra.required and card.ability.extra.awoken == false then
     card.ability.extra.awoken = true
     local eval = function() return not G.RESET_JIGGLES end
     juice_card_until(card, eval, true)
@@ -441,22 +441,22 @@ SMODS.Joker {
 
 --Blood moon
 SMODS.Joker {
-  object_type = "Joker",
-name = "mtg-bloodmoon",
-  key = "bloodmoon",
-  pos = {
-      x = 5,
-      y = 4
-  },
-  atlas = 'mtg_atlas',
-cost = 8,
-order = 8,
-rarity = 3,
-unlocked = false,
-  config = {},
-  loc_vars = function(self, info_queue, card)
-    return { }
-  end,
+	object_type = "Joker",
+	name = "mtg-bloodmoon",
+	key = "bloodmoon",
+	pos = {
+		x = 5,
+		y = 4
+	},
+	atlas = 'mtg_atlas',
+	cost = 8,
+	order = 8,
+	rarity = 3,
+	unlocked = false,
+	config = {},
+	loc_vars = function(self, info_queue, card)
+		return { }
+	end,
     check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_bloodstone" then
@@ -476,7 +476,7 @@ SMODS.Joker {
 	key = "emancipation",
 	pos = { x = 11, y = 4 },
 	config = { extra = { damage_mult = 3} },
-  order = 10,
+	order = 10,
 	rarity = 3,
 	cost = 8,
 	atlas = "mtg_atlas",
@@ -494,7 +494,7 @@ SMODS.Joker {
 	key = "bushwacker",
 	pos = { x = 8, y = 6 },
 	config = { extra = { mult = 3} },
-  order = 10,
+	order = 10,
 	rarity = 1,
 	cost = 3,
 	atlas = "mtg_atlas",
@@ -502,17 +502,17 @@ SMODS.Joker {
 		return { vars = {center.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)
-    if context.individual and not context.repetition then
-      if context.cardarea == G.play then
-        if G.GAME.current_round.hands_played == 0 then
-          return {
-            mult = card.ability.extra.mult,
-            card = card
-          }
-        end
-      end
-    end
-  end
+		if context.individual and not context.repetition then
+			if context.cardarea == G.play then
+				if G.GAME.current_round.hands_played == 0 then
+					return {
+						mult = card.ability.extra.mult,
+						card = card
+					}
+				end
+			end
+		end
+	end
 }
 
 --vortex
