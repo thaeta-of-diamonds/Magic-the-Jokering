@@ -15,7 +15,17 @@ unlocked = false,
   config = {},
   loc_vars = function(self, info_queue, card)
     return { }
-  end
+  end,
+    check_for_unlock = function(self, args)
+		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+			if v.key == "j_rough_gem" then
+				if get_joker_win_sticker(v, true) >= 1 then
+					return true
+				end
+				break
+			end
+		end
+	end,
 }
 
 --first response
@@ -154,7 +164,17 @@ unlocked = false,
   config = {},
   loc_vars = function(self, info_queue, card)
     return { }
-  end
+  end,
+    check_for_unlock = function(self, args)
+		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+			if v.key == "j_onyx_agate" then
+				if get_joker_win_sticker(v, true) >= 1 then
+					return true
+				end
+				break
+			end
+		end
+	end,
 }
 
 --Jokulmorder
@@ -364,7 +384,17 @@ unlocked = false,
     config = {},
     loc_vars = function(self, info_queue, card)
       return { }
-    end
+    end,
+	check_for_unlock = function(self, args)
+		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+			if v.key == "j_arrowhead" then
+				if get_joker_win_sticker(v, true) >= 1 then
+					return true
+				end
+				break
+			end
+		end
+	end,
 }
 
 --Waste not, gives you money, cards, or +mult when you discard cards
@@ -426,7 +456,17 @@ unlocked = false,
   config = {},
   loc_vars = function(self, info_queue, card)
     return { }
-  end
+  end,
+    check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_bloodstone" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end,
 }
 
 --Fiery Emancipation
@@ -718,17 +758,16 @@ unlocked = false,
   loc_vars = function(self, info_queue, card)
     return { }
   end,
-	check_for_unlock = function(self, args)
-		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
-			if v.key == "j_mtg_primalcrux" then
-				if get_joker_win_sticker(v, true) >= 8 then
-					return true
-				end
-				break
-			end
-		end
-		return false
-	end,
+    check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_mtg_primalcrux" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end,
 }
 
 --Goblin Anarchomancer
@@ -847,7 +886,17 @@ unlocked = false,
   config = {},
   loc_vars = function(self, info_queue, card)
     return { }
-  end
+  end,
+  check_for_unlock = function(self, args)
+	for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+	  if v.key == "j_mtg_omarthis" then
+		if get_joker_win_sticker(v, true) >= 1 then
+		  return true
+		end
+		break
+	  end
+	end
+  end,
 }
 end
 
