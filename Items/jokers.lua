@@ -638,7 +638,12 @@ SMODS.Joker {
         }
       end
     end
-  end
+  end,
+  check_for_unlock = function(self, args)
+	if G.PROFILES[G.SETTINGS.profile].career_stats["mtg_clovers_played"] or 0 >= 100 then
+		return true
+	end
+  end,
 }
 end
 

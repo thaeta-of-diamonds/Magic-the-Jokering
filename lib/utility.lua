@@ -599,3 +599,10 @@ SMODS.current_mod.config_tab = function()
         }}
     }}
 end
+
+
+SMODS.current_mod.calculate = function(self, context)
+	if context.individual and context.cardarea == G.hand and context.other_card:is_suit(suit_clovers.key) then
+	inc_career_stat("mtg_clovers_played", 1)
+	end
+end
