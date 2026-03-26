@@ -113,6 +113,10 @@ return {
                     "per round",
                     "{C:red}X#2#{} {C:attention}Blind{} size"
                 },
+				unlock = {
+					"Score {C:attention}4X{} the amount of required chips",
+					"on the {C:attention}ante 8 Showdown Blind{}",
+				},
             },
             j_mtg_etheriumsculptor = {
                 name = "Etherium Sculptor",
@@ -120,6 +124,9 @@ return {
                     "Played {C:attention}Steel{} cards give",
                     "{C:chips}+#1#{} Chips when scored"
                 },
+				unlock = {
+					"Win a run with {C:attention}Steel Joker",
+				},
             },
             j_mtg_harbinger = {
                 name = "Harbinger of the Seas",
@@ -153,6 +160,10 @@ return {
                     "{C:attention}Jokers{}",
                     "are {C:green}free{}"
                 },
+				unlock = {
+					"Win a run on {C:attention}Green Deck{}",
+					"on {C:attention}Black Stake{}",
+				},
             },
             j_mtg_evincar = {
                 name = "Ascendant Evincar",

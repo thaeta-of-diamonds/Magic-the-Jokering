@@ -91,6 +91,7 @@ SMODS.Joker {
 	object_type = "Joker",
 	name = "mtg-ruleoflaw",
 	key = "ruleoflaw",
+	unlocked = false,
 	pos = { x = 13, y = 1 },
 	config = { extra = {num_hands = 1, blind_size = 0.25}},
   order = 2,
@@ -101,20 +102,27 @@ SMODS.Joker {
 		return { vars = {center.ability.extra.num_hands, center.ability.extra.blind_size}}
 	end,
 	calculate = function(self, card, context)
-    if context.setting_blind and not (context.blueprint_card or card).getting_sliced then
-      G.E_MANAGER:add_event(Event({func = function()
-        G.E_MANAGER:add_event(Event({func = function()
-          local hands_sub = G.GAME.round_resets.hands - card.ability.extra.num_hands
-          ease_hands_played(-hands_sub)
-          G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.blind_size
-          G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-          play_sound('timpani')
-          delay(0.4)
-          return true end }))
-        card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('mtg_rule_ex')})
-        return true end }))
-    end
-	end
+		if context.setting_blind and not (context.blueprint_card or card).getting_sliced then
+		G.E_MANAGER:add_event(Event({func = function()
+			G.E_MANAGER:add_event(Event({func = function()
+			local hands_sub = G.GAME.round_resets.hands - card.ability.extra.num_hands
+			ease_hands_played(-hands_sub)
+			G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.blind_size
+			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			play_sound('timpani')
+			delay(0.4)
+			return true end }))
+			card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('mtg_rule_ex')})
+			return true end }))
+		end
+	end,
+	check_for_unlock = function(self, args)
+		if G.GAME.round_resets.ante == 8 then
+			if args.type == 'chip_score'and args.chips >= 4 * G.GAME.blind.chips then
+				return true
+			end
+		end
+	end,
 }
 
 --etherium sculptor
@@ -122,6 +130,7 @@ SMODS.Joker {
 	object_type = "Joker",
 	name = "mtg-etheriumsculptor",
 	key = "etheriumsculptor",
+	unlocked = false,
 	pos = { x = 11, y = 5 },
 	config = { extra = { chips = 50} },
   order = 10,
@@ -144,7 +153,17 @@ SMODS.Joker {
         end
       end
     end
-  end
+  end,
+    check_for_unlock = function(self, args)
+		for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+			if v.key == "j_steel_joker" then
+				if get_joker_win_sticker(v, true) >= 1 then
+					return true
+				end
+				break
+			end
+		end
+	end,
 }
 
 --Harbinger of the seas
@@ -278,6 +297,7 @@ SMODS.Joker {
 	object_type = "Joker",
 	name = "mtg-omniscience",
 	key = "omniscience",
+	unlocked = false,
 	pos = { x = 12, y = 2 },
 	config = { extra = {}},
   order = 15,
@@ -302,7 +322,16 @@ SMODS.Joker {
         return true end }))
 	end,
 	calculate = function(self, card, context)
-  end
+  end,
+  -- [[
+    check_for_unlock = function(self, args)
+		if args.type == "win" then
+			if get_deck_win_stake(b_green) >= 4 then
+				return true
+			end
+		end
+	end,
+	--]]
 }
 
 --ascendant evincar
