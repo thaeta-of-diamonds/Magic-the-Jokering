@@ -188,13 +188,13 @@ if MagicTheJokering.config.include_suitless_suit then
 	init_suitless()
 end
 update_ranks()
-assert(SMODS.load_file("Items/Magic.lua"))()
+assert(SMODS.load_file("Items/magic.lua"))()
 assert(SMODS.load_file("Items/planeswalkers.lua"))()
-assert(SMODS.load_file("Items/Jokers.lua"))()
-assert(SMODS.load_file("Items/Enha.lua"))()
-assert(SMODS.load_file("Items/Misc.lua"))()
-assert(SMODS.load_file("Items/Lands.lua"))()
-assert(SMODS.load_file("Items/Seals.lua"))()
+assert(SMODS.load_file("Items/jokers.lua"))()
+assert(SMODS.load_file("Items/enha.lua"))()
+assert(SMODS.load_file("Items/misc.lua"))()
+assert(SMODS.load_file("Items/lands.lua"))()
+assert(SMODS.load_file("Items/seals.lua"))()
 
 -- other mod stuff
 
